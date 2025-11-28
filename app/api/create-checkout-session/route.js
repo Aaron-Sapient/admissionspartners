@@ -9,7 +9,10 @@ export async function POST(request) {
       { status: 400 }
     );
   }
-
+const origin =
+  req.headers.get("origin") ||
+  process.env.NEXT_PUBLIC_BASE_URL ||
+  "http://localhost:3000";
   const { items, discountPercent } = body;
 
   if (!items || !Array.isArray(items) || items.length === 0) {
@@ -58,8 +61,8 @@ export async function POST(request) {
             },
           ]
         : [],
-      success_url: process.env.STRIPE_SUCCESS_URL,
-      cancel_url: process.env.STRIPE_CANCEL_URL,
+      success_url: `${origin}/success`,
+cancel_url: `${origin}/cancel`,
     });
 
     return Response.json({ url: session.url });
