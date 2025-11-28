@@ -74,7 +74,7 @@ export default function CartSidebar({
               competitions10 ||
               internship > 0 ||
               soloProject > 0 ||
-              groupProject) && (
+              groupProject > 0) && (
               <Section title="Mentorship">
                 {competitions5 && (
                   <LineItem label="5 Competitions" value={formatPrice(7500)} />
@@ -98,10 +98,10 @@ export default function CartSidebar({
                   />
                 )}
                 {groupProject > 0 && (
-  <LineItem
-    label={`Group Project (${groupProject})`}
-    value={formatPrice(groupProject * 5000)}
-  />
+                  <LineItem
+                    label={`Group Project (${groupProject})`} 
+                    value={formatPrice(groupProject * 5000)}
+                  />
 )}
               </Section>
             )}

@@ -1,80 +1,40 @@
 import Stripe from "stripe";
+import { NextResponse } from "next/server";
 
-export async function POST(request) {
-  const body = await request.json().catch(() => null);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-  if (!body) {
-    return Response.json(
-      { error: "Invalid JSON body received." },
-      { status: 400 }
-    );
-  }
-const origin =
-  req.headers.get("origin") ||
-  process.env.NEXT_PUBLIC_BASE_URL ||
-  "http://localhost:3000";
-  const { items, discountPercent } = body;
-
-  if (!items || !Array.isArray(items) || items.length === 0) {
-    return Response.json(
-      { error: "No line items provided to Stripe checkout." },
-      { status: 400 }
-    );
-  }
-
-  // ---------- STRIPE INIT ----------
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-  // ---------- COUPON MAP ----------
-  const COUPON_MAP = {
-    2: process.env.STRIPE_COUPON_2,
-    4: process.env.STRIPE_COUPON_4,
-    6: process.env.STRIPE_COUPON_6,
-    8: process.env.STRIPE_COUPON_8,
-    10: process.env.STRIPE_COUPON_10,
-    12: process.env.STRIPE_COUPON_12,
-    14: process.env.STRIPE_COUPON_14,
-    16: process.env.STRIPE_COUPON_16,
-    18: process.env.STRIPE_COUPON_18,
-    20: process.env.STRIPE_COUPON_20,
-  };
-
-  const finalDiscount = Math.min(discountPercent ?? 0, 20);
-  const couponToApply = COUPON_MAP[finalDiscount] || null;
-
-  // ---------- DEBUG LOGS ----------
-  console.log("🔥 Stripe Checkout INIT");
-  console.log("Items received:", items);
-  console.log("Discount %:", discountPercent);
-  console.log("Final Discount %:", finalDiscount);
-  console.log("Using Coupon:", couponToApply);
-
-  // ---------- BUILD SESSION ----------
+export async function POST(req) {
   try {
+    // Parse the request body
+    const body = await req.json();
+    const { items, selectedCoupon } = body;
+
+    // Determine origin (local or Vercel)
+    const origin =
+      req.headers.get("origin") ||
+      process.env.NEXT_PUBLIC_BASE_URL ||
+      "http://localhost:3000";
+
+    console.log("🔥 Stripe Checkout INIT");
+    console.log("Items received:", items);
+    console.log("Using Coupon:", selectedCoupon);
+    console.log("Origin:", origin);
+
+    // Create Stripe Checkout Session
     const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
       mode: "payment",
       line_items: items,
-      discounts: couponToApply
-        ? [
-            {
-              coupon: couponToApply,
-            },
-          ]
-        : [],
+      discounts: selectedCoupon ? [{ coupon: selectedCoupon }] : [],
       success_url: `${origin}/success`,
-cancel_url: `${origin}/cancel`,
+      cancel_url: `${origin}/cancel`,
     });
 
-    return Response.json({ url: session.url });
-  } catch (err) {
-    console.error("❌ STRIPE CHECKOUT ERROR:", err);
-
-    return Response.json(
-      {
-        error: "Stripe Checkout failed.",
-        message: err?.message,
-        details: err,
-      },
+    return NextResponse.json({ url: session.url });
+  } catch (error) {
+    console.error("❌ STRIPE CHECKOUT ERROR:", error);
+    return NextResponse.json(
+      { error: error.message },
       { status: 500 }
     );
   }
