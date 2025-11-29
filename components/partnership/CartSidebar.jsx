@@ -27,6 +27,8 @@ export default function CartSidebar({
   formatPrice,
   onCheckout,
   isLoading,
+  agreedToTerms,
+  setAgreedToTerms,
 }) {
   const selectedPackageLabel =
     selectedPackage &&
@@ -193,10 +195,28 @@ export default function CartSidebar({
               </div>
             </div>
           </div>
-
+<div className="flex items-center gap-2 mb-4">
+  <input
+    type="checkbox"
+    checked={agreedToTerms}
+    onChange={(e) => setAgreedToTerms(e.target.checked)}
+    className="w-5 h-5 cursor-pointer"
+  />
+  <label className="text-sm text-gray-700 leading-snug cursor-pointer">
+    I agree to the{" "}
+    <a
+      href="/terms"
+      className="underline font-semibold"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Terms & Conditions
+    </a>
+  </label>
+</div>
           <button
             onClick={onCheckout}
-            disabled={isLoading}
+             disabled={!selectedPackage || isLoading || !agreedToTerms}
             className="w-full py-3 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               backgroundColor: "#444",

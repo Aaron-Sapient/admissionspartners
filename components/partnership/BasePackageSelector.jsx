@@ -36,7 +36,9 @@ export default function BasePackageSelector({
               }`}
               style={{ borderWidth: 1 }}
             >
-              <div className="font-semibold mb-1">{pkg.label}</div>
+              <div className="font-semibold mb-1 text-sm sm:text-base break-words text-center">
+  {pkg.label}
+</div>
               {pkg.subtitle && (
                 <div className="text-xs text-gray-600 mb-2">
                   {pkg.subtitle}

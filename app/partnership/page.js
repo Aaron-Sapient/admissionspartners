@@ -43,7 +43,7 @@ export default function PartnershipPage() {
   // ------------- STATE -------------
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedPackage, setSelectedPackage] = useState(null);
-
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [extraColleges, setExtraColleges] = useState(0);
   const [competitions5, setCompetitions5] = useState(false);
   const [competitions10, setCompetitions10] = useState(false);
@@ -237,6 +237,12 @@ const handleExtraCollegesChange = (val) => {
 
   // ------------- CHECKOUT HANDLER (Stripe) -------------
   const handleCheckout = async () => {
+
+if (!agreedToTerms) {
+  alert("You must agree to the Terms & Conditions before checking out.");
+  return;
+}
+
     if (!selectedGrade || !selectedPackage) {
       alert("Please select a grade and package first.");
       return;
@@ -455,6 +461,8 @@ setSatGroupCourse={handleSatGroupCourseChange}
               formatPrice={formatPrice}
               onCheckout={handleCheckout}
               isLoading={isLoading}
+              agreedToTerms={agreedToTerms}
+              setAgreedToTerms={setAgreedToTerms}
             />
           </div>
         </div>
