@@ -1,3 +1,4 @@
+// Keep ONLY this function
 export function calculateDiscountCategories(state) {
   let count = 0;
 
@@ -12,11 +13,5 @@ export function calculateDiscountCategories(state) {
   if (state.rrSATPopular > 0) count++;
   if (state.rrSATPremium > 0) count++;
 
-  return Math.min(count, 10); // max = 10 * 2% = 20%
-}
-
-export function buildStripeDiscountArray(categoryCount) {
-  return Array.from({ length: categoryCount }, () => ({
-    coupon: process.env.STRIPE_COUPON_2_PERCENT,
-  }));
+  return Math.min(count, 10); // 10 categories → maximum 20%
 }

@@ -12,6 +12,21 @@ import CartSidebar from "../../components/partnership/CartSidebar.jsx";
 import { PRICE_MAP } from "../../components/partnership/PRICE_MAP.js";
 import { calculateDiscountCategories } from "../../components/partnership/useDiscount.js";
 
+
+// 🟦 COUPON MAP (2% → 20%)
+const COUPON_MAP = {
+  2: process.env.NEXT_PUBLIC_STRIPE_COUPON_2,
+  4: process.env.NEXT_PUBLIC_STRIPE_COUPON_4,
+  6: process.env.NEXT_PUBLIC_STRIPE_COUPON_6,
+  8: process.env.NEXT_PUBLIC_STRIPE_COUPON_8,
+  10: process.env.NEXT_PUBLIC_STRIPE_COUPON_10,
+  12: process.env.NEXT_PUBLIC_STRIPE_COUPON_12,
+  14: process.env.NEXT_PUBLIC_STRIPE_COUPON_14,
+  16: process.env.NEXT_PUBLIC_STRIPE_COUPON_16,
+  18: process.env.NEXT_PUBLIC_STRIPE_COUPON_18,
+  20: process.env.NEXT_PUBLIC_STRIPE_COUPON_20,
+};
+
 // ------------------------
 // STATIC DISPLAY PRICES (for UI + subtotal)
 // ------------------------
@@ -232,6 +247,8 @@ const handleExtraCollegesChange = (val) => {
   );
 
   const discountPercent = addOnCategoryCount * 2; // 2% per category, max 20% enforced by useDiscount
+  const selectedCoupon =
+  discountPercent > 0 ? COUPON_MAP[discountPercent] : null;
   const discountAmount = Math.round((subtotal * discountPercent) / 100);
   const total = subtotal - discountAmount;
 
@@ -326,7 +343,7 @@ if (juniorAP10 > 0) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items,
-          discountPercent, // route.js will pick correct coupon
+           selectedCoupon, // route.js will pick correct coupon
         }),
       });
 
