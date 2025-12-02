@@ -14,9 +14,15 @@ export default function BasePackageSelector({
         <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-semibold">
           2
         </div>
-        <h2 className="text-lg font-semibold">
-          Choose your base counseling package
-        </h2>
+       <h2 className="text-lg font-semibold">
+  Choose your{" "}
+  <a
+    href="https://www.admissions.partners/#packages"
+    className="text-blue-600 underline hover:text-blue-800 transition"
+  >
+    base counseling package
+  </a>
+</h2>
       </div>
       <div className="grid grid-cols-3 gap-4">
         {packages.map((pkg) => {

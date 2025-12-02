@@ -42,9 +42,18 @@ export default function Coaching({
   <div className="flex items-center justify-between">
     <div>
       <div className="font-semibold">Ryan 1:1 SAT Popular Combo</div>
-      <div className="text-xs text-gray-600 mb-1">
-        Balanced SAT one-on-one prep package with Ryan & his team.
-      </div>
+     <div className="text-xs text-gray-600 mb-1">
+  Balanced SAT one-on-one{" "}
+  <a
+    href="https://www.ryanchoice.com/#test-prep-signup"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline hover:text-gray-800"
+  >
+    prep package
+  </a>{" "}
+  with Ryan & his team.
+</div>
       <div className="font-semibold">$5,460</div>
     </div>
     <input
@@ -61,9 +70,18 @@ export default function Coaching({
   <div className="flex items-center justify-between">
     <div>
       <div className="font-semibold">Ryan 1:1 SAT Premium Combo</div>
-      <div className="text-xs text-gray-600 mb-1">
-        Ryan's most premium 1:1 SAT experience.
-      </div>
+     <div className="text-xs text-gray-600 mb-1">
+  Ryan and his team's most premium one-on-one{" "}
+  <a
+    href="https://www.ryanchoice.com/#test-prep-signup"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline hover:text-gray-800"
+  >
+    SAT experience
+  </a>
+  .
+</div>
       <div className="font-semibold">$6,425</div>
     </div>
     <input
