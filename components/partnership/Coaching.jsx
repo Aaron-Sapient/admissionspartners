@@ -37,13 +37,13 @@ export default function Coaching({
           onChange={setSatGroupCourse}
         />
 
- {/* Ryan & Ryan SAT Popular Combo */}
+ {/* Ryan SAT Popular Combo */}
 <div className="border-2 border-gray-200 rounded-lg p-4">
   <div className="flex items-center justify-between">
     <div>
-      <div className="font-semibold">Ryan & Ryan SAT Popular Combo</div>
+      <div className="font-semibold">Ryan 1:1 SAT Popular Combo</div>
       <div className="text-xs text-gray-600 mb-1">
-        Balanced SAT prep package with Ryan & Ryan.
+        Balanced SAT one-on-one prep package with Ryan & his team.
       </div>
       <div className="font-semibold">$5,460</div>
     </div>
@@ -60,9 +60,9 @@ export default function Coaching({
 <div className="border-2 border-gray-200 rounded-lg p-4">
   <div className="flex items-center justify-between">
     <div>
-      <div className="font-semibold">Ryan & Ryan SAT Premium Combo</div>
+      <div className="font-semibold">Ryan 1:1 SAT Premium Combo</div>
       <div className="text-xs text-gray-600 mb-1">
-        Our most premium SAT experience.
+        Ryan's most premium 1:1 SAT experience.
       </div>
       <div className="font-semibold">$6,425</div>
     </div>
