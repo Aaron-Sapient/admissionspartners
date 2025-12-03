@@ -14,19 +14,21 @@ export default function BasePackageSelector({
         <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-semibold">
           2
         </div>
-    <h2 className="text-lg font-semibold">
-  Choose your{" "}
-  <a
-    href="https://www.admissions.partners/#packages"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-blue-600 underline hover:text-blue-800 transition"
-  >
-    base counseling package
-  </a>
-</h2>
+        <h2 className="text-lg font-semibold">
+          Choose your{" "}
+          <a
+            href="https://www.admissions.partners/#packages"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline hover:text-blue-800 transition"
+          >
+            base counseling package
+          </a>
+        </h2>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+
+      {/* Responsive grid — 1 column on mobile, 3 on desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {packages.map((pkg) => {
           const price =
             selectedGrade && getPackagePriceForDisplay(pkg.id, selectedGrade);
@@ -37,7 +39,7 @@ export default function BasePackageSelector({
               onClick={() =>
                 onSelect(selectedPackage === pkg.id ? null : pkg.id)
               }
-              className={`p-6 border rounded-lg text-center transition-all ${
+              className={`p-6 border rounded-lg text-center transition-all w-full ${
                 selectedPackage === pkg.id
                   ? "border-black bg-[#faf9f4]"
                   : "border-gray-300 hover:border-gray-400"
@@ -45,13 +47,15 @@ export default function BasePackageSelector({
               style={{ borderWidth: 1 }}
             >
               <div className="font-semibold mb-1 text-sm sm:text-base break-words text-center">
-  {pkg.label}
-</div>
+                {pkg.label}
+              </div>
+
               {pkg.subtitle && (
                 <div className="text-xs text-gray-600 mb-2">
                   {pkg.subtitle}
                 </div>
               )}
+
               {price && (
                 <div className="text-sm font-semibold">
                   {formatPrice(price)}

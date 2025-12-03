@@ -9,7 +9,7 @@ export default function GradeSelector({ grades, selectedGrade, onSelect }) {
         </div>
         <h2 className="text-lg font-semibold">What grade is your student?</h2>
       </div>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {grades.map((grade) => (
           <button
             key={grade.id}

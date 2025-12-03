@@ -37,129 +37,162 @@ export default function Coaching({
           onChange={setSatGroupCourse}
         />
 
- {/* Ryan SAT Popular Combo */}
-<div className="border-2 border-gray-200 rounded-lg p-4">
-  <div className="flex items-center justify-between">
-    <div>
-      <div className="font-semibold">Ryan 1:1 SAT Popular Combo</div>
-     <div className="text-xs text-gray-600 mb-1">
-  Balanced SAT one-on-one{" "}
-  <a
-    href="https://www.ryanchoice.com/#test-prep-signup"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline hover:text-gray-800"
-  >
-    prep package
-  </a>{" "}
-  with Ryan & his team.
-</div>
-      <div className="font-semibold">$5,460</div>
-    </div>
-    <input
-      type="checkbox"
-      checked={rrSATPopular > 0}
-      onChange={(e) => setRrSATPopular(e.target.checked)}
-      className="w-5 h-5 cursor-pointer"
-    />
-  </div>
-</div>
+        {/* Ryan SAT Popular Combo */}
+        <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-semibold">Ryan 1:1 SAT Popular Combo</div>
+              <div className="text-xs text-gray-600 mb-1">
+                Balanced SAT one-on-one{" "}
+                <a
+                  href="https://www.ryanchoice.com/#test-prep-signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-gray-800"
+                >
+                  prep package
+                </a>{" "}
+                with Ryan & his team.
+              </div>
+              <div className="font-semibold">$5,460</div>
+            </div>
 
-{/* Ryan & Ryan SAT Premium Combo */}
-<div className="border-2 border-gray-200 rounded-lg p-4">
-  <div className="flex items-center justify-between">
-    <div>
-      <div className="font-semibold">Ryan 1:1 SAT Premium Combo</div>
-     <div className="text-xs text-gray-600 mb-1">
-  Ryan and his team's most premium one-on-one{" "}
-  <a
-    href="https://www.ryanchoice.com/#test-prep-signup"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline hover:text-gray-800"
-  >
-    SAT experience
-  </a>
-  .
-</div>
-      <div className="font-semibold">$6,425</div>
-    </div>
-    <input
-      type="checkbox"
-      checked={rrSATPremium > 0}
-      onChange={(e) => setRrSATPremium(e.target.checked)}
-      className="w-5 h-5 cursor-pointer"
-    />
-  </div>
-</div>
-    {/* Senior AP Tutor (5 hrs) */}
-<div className="border-2 border-gray-200 rounded-lg p-4">
-  <div className="flex items-center justify-between">
-    <div>
-      <div className="font-semibold">Senior AP Tutor (5 hrs)</div>
-      <div className="text-xs text-gray-600 mb-1">1:1 AP tutoring with senior instructor</div>
-      <div className="font-semibold">$1,225</div>
-    </div>
-    <input
-      type="checkbox"
-      checked={seniorAP5 > 0}
-      onChange={(e) => setSeniorAP5(e.target.checked)}
-      className="w-5 h-5 cursor-pointer"
-    />
-  </div>
-</div>
+            <input
+              type="checkbox"
+              checked={rrSATPopular > 0}
+              onChange={(e) => setRrSATPopular(e.target.checked ? 1 : 0)}
+              className="w-5 h-5 cursor-pointer"
+            />
+          </div>
+        </div>
 
-{/* Senior AP Tutor (10 hrs) */}
-<div className="border-2 border-gray-200 rounded-lg p-4">
-  <div className="flex items-center justify-between">
-    <div>
-      <div className="font-semibold">Senior AP Tutor (10 hrs)</div>
-      <div className="text-xs text-gray-600 mb-1">Extended premium AP tutoring package</div>
-      <div className="font-semibold">$1,950</div>
-    </div>
-    <input
-      type="checkbox"
-      checked={seniorAP10 > 0}
-      onChange={(e) => setSeniorAP10(e.target.checked)}
-      className="w-5 h-5 cursor-pointer"
-    />
-  </div>
-</div>
+        {/* Ryan SAT Premium Combo */}
+        <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-semibold">Ryan 1:1 SAT Premium Combo</div>
+              <div className="text-xs text-gray-600 mb-1">
+                Ryan and his team's most premium one-on-one{" "}
+                <a
+                  href="https://www.ryanchoice.com/#test-prep-signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-gray-800"
+                >
+                  SAT experience
+                </a>
+                .
+              </div>
+              <div className="font-semibold">$6,425</div>
+            </div>
 
-{/* Junior AP Tutor (5 hrs) */}
-<div className="border-2 border-gray-200 rounded-lg p-4">
-  <div className="flex items-center justify-between">
-    <div>
-      <div className="font-semibold">Junior AP Tutor (5 hrs)</div>
-      <div className="text-xs text-gray-600 mb-1">1:1 AP tutoring with junior instructor</div>
-      <div className="font-semibold">$725</div>
-    </div>
-    <input
-      type="checkbox"
-      checked={juniorAP5 > 0}
-      onChange={(e) => setJuniorAP5(e.target.checked)}
-      className="w-5 h-5 cursor-pointer"
-    />
-  </div>
-</div>
+            <input
+              type="checkbox"
+              checked={rrSATPremium > 0}
+              onChange={(e) => setRrSATPremium(e.target.checked ? 1 : 0)}
+              className="w-5 h-5 cursor-pointer"
+            />
+          </div>
+        </div>
 
-{/* Junior AP Tutor (10 hrs) */}
-<div className="border-2 border-gray-200 rounded-lg p-4">
-  <div className="flex items-center justify-between">
-    <div>
-      <div className="font-semibold">Junior AP Tutor (10 hrs)</div>
-      <div className="text-xs text-gray-600 mb-1">Extended AP tutoring bundle</div>
-      <div className="font-semibold">$950</div>
-    </div>
-    <input
-      type="checkbox"
-      checked={juniorAP10 > 0}
-      onChange={(e) => setJuniorAP10(e.target.checked)}
-      className="w-5 h-5 cursor-pointer"
-    />
-  </div>
-</div>
-    
+        {/* (6) AP Coaching header */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center text-white text-sm font-semibold">
+              6
+            </div>
+            <h2 className="text-lg font-semibold">
+              <a
+                href="https://www.admissions.partners/aps"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline hover:text-blue-800 transition"
+              >
+                AP Coaching
+              </a>
+            </h2>
+          </div>
+        </div>
+
+        {/* Senior AP Tutor (5 hrs) */}
+        <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-semibold">Senior AP Tutor (5 hrs)</div>
+              <div className="text-xs text-gray-600 mb-1">
+                1:1 AP tutoring with senior instructor
+              </div>
+              <div className="font-semibold">$1,225</div>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={seniorAP5 > 0}
+              onChange={(e) => setSeniorAP5(e.target.checked ? 1 : 0)}
+              className="w-5 h-5 cursor-pointer"
+            />
+          </div>
+        </div>
+
+        {/* Senior AP Tutor (10 hrs) */}
+        <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-semibold">Senior AP Tutor (10 hrs)</div>
+              <div className="text-xs text-gray-600 mb-1">
+                Extended premium AP tutoring package
+              </div>
+              <div className="font-semibold">$1,950</div>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={seniorAP10 > 0}
+              onChange={(e) => setSeniorAP10(e.target.checked ? 1 : 0)}
+              className="w-5 h-5 cursor-pointer"
+            />
+          </div>
+        </div>
+
+        {/* Junior AP Tutor (5 hrs) */}
+        <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-semibold">Junior AP Tutor (5 hrs)</div>
+              <div className="text-xs text-gray-600 mb-1">
+                1:1 AP tutoring with junior instructor
+              </div>
+              <div className="font-semibold">$725</div>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={juniorAP5 > 0}
+              onChange={(e) => setJuniorAP5(e.target.checked ? 1 : 0)}
+              className="w-5 h-5 cursor-pointer"
+            />
+          </div>
+        </div>
+
+        {/* Junior AP Tutor (10 hrs) */}
+        <div className="border-2 border-gray-200 rounded-lg p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="font-semibold">Junior AP Tutor (10 hrs)</div>
+              <div className="text-xs text-gray-600 mb-1">
+                Extended AP tutoring bundle
+              </div>
+              <div className="font-semibold">$950</div>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={juniorAP10 > 0}
+              onChange={(e) => setJuniorAP10(e.target.checked ? 1 : 0)}
+              className="w-5 h-5 cursor-pointer"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -177,6 +210,7 @@ function CounterCard({ title, subtitle, priceLabel, value, onChange }) {
           <div className="text-xs text-gray-600 mb-1">{subtitle}</div>
           <div className="font-semibold">{priceLabel}</div>
         </div>
+
         <div className="flex items-center gap-3">
           <button
             onClick={() => onChange(Math.max(0, value - 1))}
@@ -185,7 +219,9 @@ function CounterCard({ title, subtitle, priceLabel, value, onChange }) {
           >
             <Minus className="w-4 h-4" />
           </button>
+
           <span className="w-8 text-center font-semibold">{value}</span>
+
           <button
             onClick={() => onChange(value + 1)}
             className="w-8 h-8 border rounded flex items-center justify-center hover:bg-gray-50"

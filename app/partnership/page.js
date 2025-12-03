@@ -43,13 +43,13 @@ const extraCollegePricing = {
 };
 
 const packages = [
-  { id: "essential", label: "Essential", subtitle: "" },
-  { id: "comprehensive", label: "Comprehensive", subtitle: "" },
-  { id: "vip", label: "VIP", subtitle: "" },
+  { id: "essential", label: "Essential", subtitle: "core guidance for motivated self-starters" },
+  { id: "comprehensive", label: "Comprehensive", subtitle: "most popular full-support plan" },
+  { id: "vip", label: "VIP", subtitle: "our highest-touch, premium-level plan" },
 ];
 
 const grades = [
-  { id: "9th", label: "9th grade", subtitle: "4-year program (9–12)" },
+  { id: "9th", label: "9th grade", subtitle: "4-year program - (9–12)" },
   { id: "10th", label: "10th grade", subtitle: "3-year program (10–12)" },
   { id: "11th", label: "11th grade", subtitle: "2-year program (11–12)" },
 ];
@@ -452,35 +452,35 @@ setSatGroupCourse={handleSatGroupCourseChange}
         <div className="lg:col-span-1">
           <div className="lg:sticky lg:top-8">
             <CartSidebar
-              packages={packages}
-              selectedPackage={selectedPackage}
-              selectedGrade={selectedGrade}
-              extraColleges={extraColleges}
-              competitions5={competitions5}
-              competitions10={competitions10}
-              internship={internship}
-              soloProject={soloProject}
-              groupProject={groupProject}
-              satGroupCourse={satGroupCourse}
-              seniorAP5={0}
-              seniorAP10={0}
-              juniorAP5={0}
-              juniorAP10={0}
-              rrSATPopular={rrSATPopular}
-              rrSATPremium={rrSATPremium}
-              getPackagePrice={getPackagePrice}
-              getExtraCollegePrice={getExtraCollegePrice}
-              subtotal={subtotal}
-              discountAmount={discountAmount}
-              discountPercent={discountPercent}
-              total={total}
-              addOnCategoryCount={addOnCategoryCount}
-              formatPrice={formatPrice}
-              onCheckout={handleCheckout}
-              isLoading={isLoading}
-              agreedToTerms={agreedToTerms}
-              setAgreedToTerms={setAgreedToTerms}
-            />
+  packages={packages}
+  selectedPackage={selectedPackage}
+  selectedGrade={selectedGrade}
+  extraColleges={extraColleges}
+  competitions5={competitions5}
+  competitions10={competitions10}
+  internship={internship}
+  soloProject={soloProject}
+  groupProject={groupProject}
+  satGroupCourse={satGroupCourse}
+  seniorAP5={seniorAP5}
+  seniorAP10={seniorAP10}
+  juniorAP5={juniorAP5}
+  juniorAP10={juniorAP10}
+  rrSATPopular={rrSATPopular}
+  rrSATPremium={rrSATPremium}
+  getPackagePrice={getPackagePrice}
+  getExtraCollegePrice={getExtraCollegePrice}
+  subtotal={subtotal}
+  discountAmount={discountAmount}
+  discountPercent={discountPercent}
+  total={total}
+  addOnCategoryCount={addOnCategoryCount}
+  formatPrice={formatPrice}
+  onCheckout={handleCheckout}
+  isLoading={isLoading}
+  agreedToTerms={agreedToTerms}
+  setAgreedToTerms={setAgreedToTerms}
+/>
           </div>
         </div>
       </div>
