@@ -17,7 +17,7 @@ export default function BasePackageSelector({
         <h2 className="text-lg font-semibold">
           Choose your{" "}
           <a
-            href="https://www.admissions.partners/#packages"
+            href="https://www.admissions.partners/packages"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 underline hover:text-blue-800 transition"
