@@ -40,7 +40,7 @@ export default function CartSidebar({
   const [referralError, setReferralError] = useState("");
 
   const validateReferral = () => {
-    const validCodes = ["referral25", "apfriend", "choice5"]; // whatever codes you want
+    const validCodes = ["referral25", "winter25"]; // whatever codes you want
 
     const code = referralCode.trim().toLowerCase();
 
