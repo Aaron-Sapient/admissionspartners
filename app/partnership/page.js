@@ -25,6 +25,16 @@ const COUPON_MAP = {
   16: process.env.NEXT_PUBLIC_STRIPE_COUPON_16,
   18: process.env.NEXT_PUBLIC_STRIPE_COUPON_18,
   20: process.env.NEXT_PUBLIC_STRIPE_COUPON_20,
+
+// Referral + auto combos
+  5: process.env.NEXT_PUBLIC_STRIPE_COUPON_5,  
+  7: process.env.NEXT_PUBLIC_STRIPE_COUPON_7,
+  9: process.env.NEXT_PUBLIC_STRIPE_COUPON_9,
+  11: process.env.NEXT_PUBLIC_STRIPE_COUPON_11,
+  13: process.env.NEXT_PUBLIC_STRIPE_COUPON_13,
+  15: process.env.NEXT_PUBLIC_STRIPE_COUPON_15,
+  17: process.env.NEXT_PUBLIC_STRIPE_COUPON_17,
+  19: process.env.NEXT_PUBLIC_STRIPE_COUPON_19,
 };
 
 // ------------------------
@@ -59,33 +69,42 @@ export default function PartnershipPage() {
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+
+  // 🔹 ADD THIS LINE HERE
+  const [referralValid, setReferralValid] = useState(false);
+
   const [extraColleges, setExtraColleges] = useState(0);
   const [competitions5, setCompetitions5] = useState(false);
   const [competitions10, setCompetitions10] = useState(false);
+
   const [internship, setInternship] = useState(0);
   const handleInternshipChange = (val) => {
-  const safeVal = Math.max(0, Math.min(3, val)); // caps at 3
-  setInternship(safeVal);
-};
+    const safeVal = Math.max(0, Math.min(3, val));
+    setInternship(safeVal);
+  };
+
   const [soloProject, setSoloProject] = useState(0);
+
   const [groupProject, setGroupProject] = useState(0);
-const handleGroupProjectChange = (val) => {
-  const safeVal = Math.max(0, Math.min(5, val)); // 0–5 range
-  setGroupProject(safeVal);
-};
+  const handleGroupProjectChange = (val) => {
+    const safeVal = Math.max(0, Math.min(5, val));
+    setGroupProject(safeVal);
+  };
+
   const [satGroupCourse, setSatGroupCourse] = useState(0);
   const handleSatGroupCourseChange = (val) => {
-  const safeVal = Math.max(0, Math.min(3, val)); // universal max 3
-  setSatGroupCourse(safeVal);
-};
-  const [rrSATPopular, setRrSATPopular] = useState(0);  // use 0/1 for quantity
-  const [rrSATPremium, setRrSATPremium] = useState(0);  // use 0/1 for quantity
+    const safeVal = Math.max(0, Math.min(3, val));
+    setSatGroupCourse(safeVal);
+  };
+
+  const [rrSATPopular, setRrSATPopular] = useState(0);
+  const [rrSATPremium, setRrSATPremium] = useState(0);
 
   // --- AP Tutoring Add-Ons ---
-const [seniorAP5, setSeniorAP5] = useState(0);
-const [seniorAP10, setSeniorAP10] = useState(0);
-const [juniorAP5, setJuniorAP5] = useState(0);
-const [juniorAP10, setJuniorAP10] = useState(0);
+  const [seniorAP5, setSeniorAP5] = useState(0);
+  const [seniorAP10, setSeniorAP10] = useState(0);
+  const [juniorAP5, setJuniorAP5] = useState(0);
+  const [juniorAP10, setJuniorAP10] = useState(0);
 
 const handleSeniorAP5 = (checked) => {
   setSeniorAP5(checked ? 1 : 0);
@@ -246,11 +265,24 @@ const handleExtraCollegesChange = (val) => {
     ]
   );
 
-  const discountPercent = addOnCategoryCount * 2; // 2% per category, max 20% enforced by useDiscount
-  const selectedCoupon =
+ // 1. Base auto-discount: 2% per add-on category
+let discountPercent = addOnCategoryCount * 2;
+
+// 2. Add referral discount if valid
+if (referralValid) {
+  discountPercent += 5;
+}
+
+// 3. Cap discount at 20% (or 25% if you prefer)
+discountPercent = Math.min(discountPercent, 25);
+
+// 4. Choose the correct Stripe coupon ID
+const selectedCoupon =
   discountPercent > 0 ? COUPON_MAP[discountPercent] : null;
-  const discountAmount = Math.round((subtotal * discountPercent) / 100);
-  const total = subtotal - discountAmount;
+
+// 5. Calculate dollar discount + total
+const discountAmount = Math.round((subtotal * discountPercent) / 100);
+const total = subtotal - discountAmount;
 
   // ------------- CHECKOUT HANDLER (Stripe) -------------
   const handleCheckout = async () => {
@@ -480,6 +512,8 @@ setSatGroupCourse={handleSatGroupCourseChange}
   isLoading={isLoading}
   agreedToTerms={agreedToTerms}
   setAgreedToTerms={setAgreedToTerms}
+  referralValid={referralValid}
+  setReferralValid={setReferralValid}
 />
           </div>
         </div>

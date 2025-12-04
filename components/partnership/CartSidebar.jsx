@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useState } from "react";
+
 export default function CartSidebar({
   packages,
   selectedPackage,
@@ -29,7 +31,28 @@ export default function CartSidebar({
   isLoading,
   agreedToTerms,
   setAgreedToTerms,
+  referralValid,
+  setReferralValid,
+
 }) {
+  // 🔹 Hooks must be inside the component body
+  const [referralCode, setReferralCode] = useState("");
+  const [referralError, setReferralError] = useState("");
+
+  const validateReferral = () => {
+    const validCodes = ["referral25", "apfriend", "choice5"]; // whatever codes you want
+
+    const code = referralCode.trim().toLowerCase();
+
+    if (validCodes.includes(code)) {
+      setReferralValid(true);
+      setReferralError("");
+    } else {
+      setReferralValid(false);
+      setReferralError("Invalid code.");
+    }
+  };
+
   const selectedPackageLabel =
     selectedPackage &&
     packages.find((p) => p.id === selectedPackage)?.label;
@@ -101,10 +124,10 @@ export default function CartSidebar({
                 )}
                 {groupProject > 0 && (
                   <LineItem
-                    label={`Group Project (${groupProject})`} 
+                    label={`Group Project (${groupProject})`}
                     value={formatPrice(groupProject * 5000)}
                   />
-)}
+                )}
               </Section>
             )}
 
@@ -162,6 +185,38 @@ export default function CartSidebar({
               </Section>
             )}
 
+            {/* Discount Code */}
+            <div className="mt-4">
+              <label className="block text-sm font-semibold mb-1">
+                Discount Code
+              </label>
+
+              <input
+                type="text"
+                value={referralCode}
+                onChange={(e) => setReferralCode(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    validateReferral();
+                  }
+                }}
+                placeholder="Enter discount code"
+                className="border rounded px-3 py-2 w-full"
+              />
+
+              {referralError && (
+                <p className="text-red-500 text-sm mt-1">
+                  {referralError}
+                </p>
+              )}
+
+              {referralValid && (
+                <p className="text-green-600 text-sm mt-1">
+                  Discount code applied!
+                </p>
+              )}
+            </div>
+
             {/* Subtotal */}
             <div className="pt-4 border-t border-gray-300">
               <div className="flex justify-between">
@@ -171,7 +226,7 @@ export default function CartSidebar({
             </div>
 
             {/* Discount */}
-            {addOnCategoryCount > 0 && discountAmount > 0 && (
+            {discountPercent > 0 && (
               <div>
                 <div className="flex justify-between text-xs text-gray-600">
                   <span>
@@ -195,28 +250,30 @@ export default function CartSidebar({
               </div>
             </div>
           </div>
-<div className="flex items-center gap-2 mb-4">
-  <input
-    type="checkbox"
-    checked={agreedToTerms}
-    onChange={(e) => setAgreedToTerms(e.target.checked)}
-    className="w-5 h-5 cursor-pointer"
-  />
-  <label className="text-sm text-gray-700 leading-snug cursor-pointer">
-    I agree to the{" "}
-    <a
-      href="/terms"
-      className="underline font-semibold"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Terms & Conditions
-    </a>
-  </label>
-</div>
+
+          <div className="flex items-center gap-2 mb-4">
+            <input
+              type="checkbox"
+              checked={agreedToTerms}
+              onChange={(e) => setAgreedToTerms(e.target.checked)}
+              className="w-5 h-5 cursor-pointer"
+            />
+            <label className="text-sm text-gray-700 leading-snug cursor-pointer">
+              I agree to the{" "}
+              <a
+                href="/terms"
+                className="underline font-semibold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms & Conditions
+              </a>
+            </label>
+          </div>
+
           <button
             onClick={onCheckout}
-             disabled={!selectedPackage || isLoading || !agreedToTerms}
+            disabled={!selectedPackage || isLoading || !agreedToTerms}
             className="w-full py-3 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               backgroundColor: "#444",
