@@ -1,21 +1,21 @@
 export const PRICE_MAP = {
-  base: {
-    "9th": {
-      essential: process.env.NEXT_PUBLIC_PRICE_9TH_ESSENTIAL,
-      comprehensive: process.env.NEXT_PUBLIC_PRICE_9TH_COMPREHENSIVE,
-      vip: process.env.NEXT_PUBLIC_PRICE_9TH_VIP,
-    },
-    "10th": {
-      essential: process.env.NEXT_PUBLIC_PRICE_10TH_ESSENTIAL,
-      comprehensive: process.env.NEXT_PUBLIC_PRICE_10TH_COMPREHENSIVE,
-      vip: process.env.NEXT_PUBLIC_PRICE_10TH_VIP,
-    },
-    "11th": {
-      essential: process.env.NEXT_PUBLIC_PRICE_11TH_ESSENTIAL,
-      comprehensive: process.env.NEXT_PUBLIC_PRICE_11TH_COMPREHENSIVE,
-      vip: process.env.NEXT_PUBLIC_PRICE_11TH_VIP,
-    },
+base: {
+  "9th": {
+    essential: process.env.NEXT_PUBLIC_PRICE_9TH_ESSENTIAL_FALL,
+    comprehensive: process.env.NEXT_PUBLIC_PRICE_9TH_COMPREHENSIVE_FALL,
+    vip: process.env.NEXT_PUBLIC_PRICE_9TH_VIP_FALL,
   },
+  "10th": {
+    essential: process.env.NEXT_PUBLIC_PRICE_10TH_ESSENTIAL_FALL,
+    comprehensive: process.env.NEXT_PUBLIC_PRICE_10TH_COMPREHENSIVE_FALL,
+    vip: process.env.NEXT_PUBLIC_PRICE_10TH_VIP_FALL,
+  },
+  "11th": {
+    essential: process.env.NEXT_PUBLIC_PRICE_11TH_ESSENTIAL_FALL,
+    comprehensive: process.env.NEXT_PUBLIC_PRICE_11TH_COMPREHENSIVE_FALL,
+    vip: process.env.NEXT_PUBLIC_PRICE_11TH_VIP_FALL,
+  },
+},
 
   extraCollege: {
     essential: process.env.NEXT_PUBLIC_PRICE_EXTRA_COLLEGE_ESSENTIAL,

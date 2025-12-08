@@ -41,6 +41,12 @@ const COUPON_MAP = {
 // STATIC DISPLAY PRICES (for UI + subtotal)
 // ------------------------
 const packagePricing = {
+  "9th": { essential: 7750, comprehensive: 11500, vip: 18000 },
+  "10th": { essential: 6250, comprehensive: 9500, vip: 15000 },
+  "11th": { essential: 4750, comprehensive: 7500, vip: 12000 },
+};
+
+const originalPackagePricing = {
   "9th": { essential: 8500, comprehensive: 12500, vip: 19500 },
   "10th": { essential: 7000, comprehensive: 10500, vip: 16500 },
   "11th": { essential: 5500, comprehensive: 8500, vip: 13500 },
@@ -170,15 +176,37 @@ const handleExtraCollegesChange = (val) => {
   
 
   // ------------- PRICE HELPERS (UI / subtotal) -------------
-  const getPackagePrice = () => {
-    if (!selectedGrade || !selectedPackage) return 0;
-    return packagePricing[selectedGrade][selectedPackage] || 0;
+const getDisplayPrices = () => {
+  if (!selectedGrade || !selectedPackage) {
+    return { original: 0, discount: 0 };
+  }
+
+  return {
+    original:
+      originalPackagePricing[selectedGrade][selectedPackage] || 0,
+    discount:
+      packagePricing[selectedGrade][selectedPackage] || 0,
   };
+};
+
+const getPackagePrice = () => {
+  if (!selectedGrade || !selectedPackage) return 0;
+  return packagePricing[selectedGrade][selectedPackage] || 0;
+};
 
   const getPackagePriceForDisplay = (packageId) => {
     if (!selectedGrade) return null;
     return packagePricing[selectedGrade][packageId] ?? null;
   };
+
+const getDisplayPricePair = (packageId) => {
+  if (!selectedGrade) return { original: 0, discount: 0 };
+
+  return {
+    original: originalPackagePricing[selectedGrade][packageId],
+    discount: packagePricing[selectedGrade][packageId],
+  };
+};
 
   const getExtraCollegePrice = () => {
     if (!selectedPackage) return 500;
@@ -427,6 +455,7 @@ if (juniorAP10 > 0) {
               selectedPackage={selectedPackage}
               onSelect={setSelectedPackage}
               getPackagePriceForDisplay={getPackagePriceForDisplay}
+              getDisplayPricePair={getDisplayPricePair}
               formatPrice={formatPrice}
             />
 
