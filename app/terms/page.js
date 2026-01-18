@@ -94,17 +94,18 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-semibold mb-2">6. Payment Terms & Installments</h2>
           <p>
-            By enrolling, you commit to paying the full program fee, regardless of engagement.
+            By enrolling, you agree to pay the full program fee in its entirety, regardless of participation, engagement, or completion of services.
           </p>
+          <p>College admissions counseling services are inherently front-loaded. A substantial portion of A|P’s work, including assessments, research, strategic planning, profile development, and project and competition setup, is performed during the initial months of engagement. Accordingly, full payment is required to ensure appropriate allocation of time, resources, and professional commitment at the outset of services.</p>
           <ul className="list-disc ml-6 mt-2 space-y-1">
-            <li>Programs ≤ $10,000: typically due in full.</li>
-            <li>$10,000–$30,000: may permit two installments.</li>
-            <li>$30,000+: may permit three installments.</li>
+            <li><strong>Essential Package</strong>: Payment is typically due in full upon enrollment.</li>
+            <li><strong>Comprehensive Package</strong>: Payment may be split into up to two installments, spaced 30 days apart. The full balance must be paid within 30 days of enrollment.</li>
+            <li><strong>VIP Package</strong>: Payment may be split into up to three installments, spaced 30 days apart. The full balance must be paid within 60 days of enrollment.</li>
           </ul>
           <p className="mt-2">
-            A|P may pause or terminate services for late or declined payments. Unpaid balances
-            may be pursued through collections.
+            For Comprehensive and VIP packages, if payment is made in full upfront, A|P may apply a one-time payment incentive of $500 for programs priced at $25,000 or less, or $1,000 for programs priced above $25,000.
           </p>
+          <p>A|P reserves the right to pause, suspend, or terminate services for late, declined, or failed payments. Any unpaid balances may be referred to collections.</p>
         </section>
 
         {/* 7 */}
