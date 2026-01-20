@@ -217,31 +217,31 @@ const getDisplayPricePair = (packageId) => {
     `$${Number(price).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
 
   // ------------- SUBTOTAL (NUMERIC, USD) -------------
-  const subtotal = useMemo(() => {
-    let t = 0;
+const subtotal = useMemo(() => {
+  let t = 0;
 
-    t += getPackagePrice();
-    t += extraColleges * getExtraCollegePrice();
+  t += getPackagePrice();
+  t += extraColleges * getExtraCollegePrice();
 
-    // Mentorship prices
-    if (competitions5) t += 7500;
-    if (competitions10) t += 10000;
-    t += internship * 2500;
-    t += soloProject * 10000;
-    t += groupProject * 5000;
+  // Mentorship prices
+  if (competitions5) t += 7500;
+  if (competitions10) t += 10000;
+  t += internship * 2500;
+  t += soloProject * 10000;
+  t += groupProject * 5000;
 
-    // Coaching
-    t += satGroupCourse * 2500;
-    t += rrSATPopular * 5460;
-    t += rrSATPremium * 6425;
-    t += seniorAP5 * 1225;
-    t += seniorAP10 * 1950;
-    t += juniorAP5 * 725;
-    t += juniorAP10 * 950;
+  // Coaching
+  t += satGroupCourse * 2500;
+  t += rrSATPopular * 5460;
+  t += rrSATPremium * 6425;
+  t += seniorAP5 * 1225;
+  t += seniorAP10 * 1950;
+  t += juniorAP5 * 725;
+  t += juniorAP10 * 950;
 
-    return t;
-  }, [
-     selectedGrade,
+  return t;
+}, [
+  selectedGrade,
   selectedPackage,
   extraColleges,
   competitions5,
@@ -256,7 +256,7 @@ const getDisplayPricePair = (packageId) => {
   juniorAP10,
   rrSATPopular,
   rrSATPremium,
-  ]);
+]);
 
   // ------------- DISCOUNT (using useDiscount.js) -------------
   const addOnCategoryCount = useMemo(
