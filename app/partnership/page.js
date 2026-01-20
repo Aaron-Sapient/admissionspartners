@@ -410,7 +410,7 @@ if (juniorAP10 > 0) {
       const data = await res.json();
 
       if (data?.url) {
-        window.location.href = data.url;
+        window.open(data.url, "_blank", "noopener,noreferrer");
       } else {
         console.error("Checkout error:", data);
         alert("There was an error creating the checkout session.");
