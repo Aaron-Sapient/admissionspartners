@@ -283,32 +283,7 @@ export default function CartSidebar({
           >
             {isLoading ? "Processing..." : "Check Out"}
           </button>
-          <Report
-  packages={packages}
-  selectedPackage={selectedPackage}
-  selectedGrade={selectedGrade}
-  extraColleges={extraColleges}
-  competitions5={competitions5}
-  competitions10={competitions10}
-  internship={internship}
-  soloProject={soloProject}
-  groupProject={groupProject}
-  satGroupCourse={satGroupCourse}
-  seniorAP5={seniorAP5}
-  seniorAP10={seniorAP10}
-  juniorAP5={juniorAP5}
-  juniorAP10={juniorAP10}
-  rrSATPopular={rrSATPopular}
-  rrSATPremium={rrSATPremium}
-  getPackagePrice={getPackagePrice}
-  getExtraCollegePrice={getExtraCollegePrice}
-  subtotal={subtotal}
-  discountAmount={discountAmount}
-  discountPercent={discountPercent}
-  total={total}
-  addOnCategoryCount={addOnCategoryCount}
-  formatPrice={formatPrice}
-/>
+         
         </>
       ) : (
         <p className="text-sm text-gray-600">
